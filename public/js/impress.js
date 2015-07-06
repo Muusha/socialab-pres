@@ -317,7 +317,6 @@
             }
             
             stepsData["impress-" + el.id] = step;
-            
             css(el, {
                 position: "absolute",
                 transform: "translate(-50%,-50%)" +
@@ -446,7 +445,19 @@
             el.classList.add("active");
             
             body.classList.add("impress-on-" + el.id);
-            
+
+            if (!el.classList.contains('first')) {
+                var customTarget = {
+                    x: -1000,
+                    y: -1100
+                }
+            } else {
+                var customTarget = {
+                    x: 0,
+                    y: 0
+                }
+            }
+            //console.log(step);
             // compute target state of the canvas based on given step
             var target = {
                 rotate: {
@@ -455,13 +466,13 @@
                     z: -step.rotate.z
                 },
                 translate: {
-                    x: -step.translate.x,
-                    y: -step.translate.y,
+                    x: -step.translate.x+customTarget.x,
+                    y: -step.translate.y+customTarget.y,
                     z: -step.translate.z
                 },
                 scale: 1 / step.scale
             };
-            
+
             // Check if the transition is zooming in or not.
             //
             // This information is used to alter the transition style:
@@ -480,7 +491,7 @@
             }
             
             var targetScale = target.scale * windowScale;
-            
+            console.log(targetScale);
             // trigger leave of currently active element (if it's not the same step again)
             if (activeStep && activeStep !== el) {
                 onStepLeave(activeStep);
@@ -544,7 +555,7 @@
             stepEnterTimeout = window.setTimeout(function() {
                 onStepEnter(activeStep);
             }, duration + delay);
-            
+                      
             return el;
         };
         
@@ -707,23 +718,23 @@
                     case 33: // pg up
                     case 37: // left
                     case 38: // up
-                             if ($('.present').hasClass('first')) {
+                            if ($('.present').hasClass('first')) {
                                 api.goto('distribution');
-                             } else {
+                            } else {
                                 api.prev();
-                             }
-                             break;
+                            }
+                            break;
                     case 9:  // tab
                     case 32: // space
                     case 34: // pg down
                     case 39: // right
                     case 40: // down
-                             if ($('.present').hasClass('last')) {
+                            if ($('.present').hasClass('last')) {
                                 api.goto('socialab');
-                             } else {
+                            } else {
                                 api.next();
-                             }
-                             break; 
+                            }
+                            break; 
                 }
                 
                 event.preventDefault();
