@@ -1,0 +1,32 @@
+#impress {
+    font-family: spicy-rice, fantasy;
+}
+
+#impress .word {
+    cursor: pointer;
+}
+
+#impress .veryBig {
+    font-size: 80px;
+}
+
+#impress .big {
+    font-size: 60px;
+}
+
+#impress .medium {
+    font-size: 40px;
+}
+
+#impress .small {
+    font-size: 30px;
+}
+
+#impress .verySmall {
+    font-size: 20px;
+}
+
+#impress .rotate {
+    transform: rotate(-90deg);
+}
+
