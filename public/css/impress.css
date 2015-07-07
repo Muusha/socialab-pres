@@ -3,10 +3,6 @@
     font-size: 80px;
 }
 
-#impress .word {
-    cursor: pointer;
-}
-
 #impress .main {
     color: #F6A108;
 }
@@ -19,14 +15,46 @@
     display: block;
     position: absolute;
 
-    height: 800px;
-    width: 800px;
+    height: 700px;
+    width: 1500px;
 
-    margin: 0 auto;
+    left: 50%;
+    margin-left: -750px;
 
-    background-color: blue;
+    background-color: rgba(140,152,153,0.5);
+    z-index: 100;
 
     font-family: Georgia, serif;
     color: black;
     font-size: 20px;
+}
+
+#impress .present {
+    opacity: 1 !important;
+    z-index: 10000;
+}
+
+#impress .word {
+    cursor: pointer;
+    opacity: 1;
+
+    transition: opacity 1s;
+}
+
+body i {
+    color: #F6A108;
+    cursor: pointer;
+
+    float: left;
+    margin-right: 10px;
+
+    top: 0px;
+}
+
+body .reload {
+    display: none;
+}
+
+body .stop {
+    display: none;
 }

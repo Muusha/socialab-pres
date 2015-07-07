@@ -6,12 +6,50 @@
         <script src="//use.edgefonts.net/spicy-rice.js"></script> 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/impress.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <script>
+            $(document).ready(function(){
+
+                $('.launch').on('click', function(){
+                    $('#impress .word').css('opacity', '0.2');
+                    $(this).css('display', 'none');
+                    $('.reload').css('display', 'inline');
+                    $('.stop').css('display', 'inline');
+                    $('.first').addClass('launched');
+                });
+
+                $('.reload').on('click', function(){
+                    impress().goto('socialab');
+                });
+
+                $('.stop').on('click', function(){
+                    impress().goto('socialab');
+                    $('#impress .word').css('opacity', '1');  
+                    $('.first').removeClass('launched'); 
+                    $('.reload').css('display', 'none');
+                    $('.stop').css('display', 'none');
+                    $('.launch').css('display', 'inline');
+                });
+
+                $(window).unload(function(){
+                    $('.stop').click();
+                });
+
+                impress().init();
+            });        
+        </script>
     </head>
-    <body>
+    <body> 
+        <div class="menu">
+           <i class="fa fa-play fa-3x launch" type="button"></i>
+           <i class="fa fa-repeat fa-3x reload" type="button"></i>     
+           <i class="fa fa-stop fa-3x stop" type="button"></i>
+        </div>
         <div id="impress">
-            <div id="socialab" class="step future main first word" data-x="0" data-y="0" data-scale="4">
+            <div id="socialab" class="step future main word first" data-x="0" data-y="0" data-scale="4">
                 Socialab
-            </div>
+            </div>  
             <div id="gamification" class="step future main word" data-x="-1000" data-y="-500" data-scale="3">
                 Gamification
                 <div class="hide content">
@@ -20,24 +58,45 @@
             </div>   
             <div id="jeux" class="step future main word" data-x="-500" data-y="420" data-scale="3">
                 Jeux
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>   
-            <div id="business" class="step future main word" data-x="1200" data-y="-440" data-scale="3">
+            <div id="marche" class="step future main word" data-x="1200" data-y="-440" data-scale="3">
                 Marché
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>   
             <div id="business" class="step future main word" data-x="-200" data-y="760" data-scale="3">
                 Business
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>          
-            <div id="personnalisation" class="step future main word" data-x="1360" data-y="200" data-scale="2">
+            <div id="personnalisation" class="step future main word sub" data-x="1360" data-y="200" data-scale="2">
                 Personnalisation
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>   
-            <div id="analytics" class="step future main word" data-x="-1600" data-y="440" data-scale="2">
+            <div id="analytics" class="step future main word sub" data-x="-1600" data-y="440" data-scale="2">
                 Analytics
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>   
             <div id="tarrif" class="step future main word" data-x="1040" data-y="520" data-scale="3">
                 Tarrif
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>  
-            <div id="distribution" class="step future main word last" data-x="-1400" data-y="100" data-scale="2">
+            <div id="distribution" class="step future main word last sub" data-x="-1400" data-y="100" data-scale="2">
                 Distribution
+                <div class="hide content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et convallis nunc. Vestibulum sed ullamcorper quam. Donec ut risus velit. Mauris volutpat enim sit amet pellentesque consequat. Maecenas fermentum gravida massa, eu iaculis diam placerat ut. Maecenas sed augue sed diam feugiat semper. Aenean lobortis dui ac ante interdum, a congue nulla porta. Duis rhoncus, nisl ac tincidunt tincidunt, odio risus finibus nisl, vitae eleifend odio ex id eros. Nam sollicitudin enim ac congue vestibulum.
+                </div>
             </div>
 
             <div class="step word" data-x="-600" data-y="590" data-scale="1.2">Marketing</div>
@@ -108,10 +167,6 @@
         </div>
 
         <script src="js/impress.js"></script>
-        <script>
-            $(document).ready(function(){
-                impress().init();
-            });        
-        </script>
+        
     </body>
 </html>

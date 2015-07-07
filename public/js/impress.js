@@ -446,9 +446,12 @@
             
             body.classList.add("impress-on-" + el.id);
 
-            if (!el.classList.contains('first')) {
+            if (el.classList.contains('sub')) {
                 var customTarget = {
-                    x: -1000,
+                    y: -750
+                }
+            } else if (!el.classList.contains('first') && el.classList.contains('main')) {
+                var customTarget = {
                     y: -1100
                 }
             } else {
@@ -466,7 +469,7 @@
                     z: -step.rotate.z
                 },
                 translate: {
-                    x: -step.translate.x+customTarget.x,
+                    x: -step.translate.x,
                     y: -step.translate.y+customTarget.y,
                     z: -step.translate.z
                 },
@@ -491,7 +494,7 @@
             }
             
             var targetScale = target.scale * windowScale;
-            console.log(targetScale);
+
             // trigger leave of currently active element (if it's not the same step again)
             if (activeStep && activeStep !== el) {
                 onStepLeave(activeStep);
@@ -572,7 +575,9 @@
             var next = steps.indexOf( activeStep ) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ];
             
-            return goto(next);
+            var el = goto(next);
+
+            return el;
         };
         
         // Adding some useful classes to step elements.
@@ -718,10 +723,12 @@
                     case 33: // pg up
                     case 37: // left
                     case 38: // up
-                            if ($('.present').hasClass('first')) {
-                                api.goto('distribution');
-                            } else {
-                                api.prev();
+                            if($('.first').hasClass('launched')) {
+                                if ($('.present').hasClass('first')) {
+                                    api.goto('distribution');
+                                } else {
+                                    api.prev();
+                                }
                             }
                             break;
                     case 9:  // tab
@@ -729,10 +736,12 @@
                     case 34: // pg down
                     case 39: // right
                     case 40: // down
-                            if ($('.present').hasClass('last')) {
-                                api.goto('socialab');
-                            } else {
-                                api.next();
+                            if($('.first').hasClass('launched')) {
+                                if ($('.present').hasClass('last')) {
+                                    api.goto('socialab');
+                                } else {
+                                    api.next();
+                                }
                             }
                             break; 
                 }
@@ -768,15 +777,18 @@
         
         // delegated handler for clicking on step elements
         document.addEventListener("click", function ( event ) {
-            var target = event.target;
-            // find closest step element that is not active
-            while ( !(target.classList.contains("step") && !target.classList.contains("active")) &&
-                    (target !== document.documentElement) ) {
-                target = target.parentNode;
-            }
-            
-            if ( api.goto(target) ) {
-                event.preventDefault();
+
+            if($('.first').hasClass('launched')) {
+                var target = event.target;
+                // find closest step element that is not active
+                while ( !(target.classList.contains("step") && !target.classList.contains("active")) &&
+                        (target !== document.documentElement) ) {
+                    target = target.parentNode;
+                }
+                
+                if ( api.goto(target) ) {
+                    event.preventDefault();
+                }
             }
         }, false);
         
